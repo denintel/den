@@ -27,7 +27,7 @@ echo "";
 data=( `ps aux | grep "\[priv\]" | sort -k 72 | awk '{print $2}'`);
 
 echo "----------------------";
-echo "Checking OpenSSH login";
+echo "Checking OpenSSH/SSL login";
 echo "----------------------";
 
 for PID in "${data[@]}"
@@ -50,6 +50,3 @@ echo "------------------------------------------------"
 
 echo "";
 
-echo "Mod by partner HideSSH";
-
-echo "";
