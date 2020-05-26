@@ -258,11 +258,11 @@ chmod +x /usr/bin/build
 chmod +x /etc/rc.local
 
 # Custom Banner SSH
-wget -O /etc/issue.net "https://github.com/idtunnel/sshtunnel/raw/master/debian9/banner-custom.conf"
-chmod +x /etc/issue.net
+#wget -O /etc/issue.net "https://github.com/idtunnel/sshtunnel/raw/master/debian9/banner-custom.conf"
+#chmod +x /etc/issue.net
 
-echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
-echo "DROPBEAR_BANNER="/etc/issue.net"" >> /etc/default/dropbear
+#echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
+#echo "DROPBEAR_BANNER="/etc/issue.net"" >> /etc/default/dropbear
 
 # install fail2ban
 apt-get -y install fail2ban
