@@ -122,7 +122,7 @@ chown -R vnstat:vnstat /var/lib/vnstat
 # install squid3
 cd
 apt-get -y install squid3
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/squid3.conf"
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/denintel/den/master/debian9/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf;
 /etc/init.d/squid restart
 
@@ -177,7 +177,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
 # common password debian 
-wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/common-password-deb9"
+wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/denintel/den/master/debian9/common-password-deb9"
 chmod +x /etc/pam.d/common-password
 
 
@@ -258,7 +258,7 @@ chmod +x /usr/bin/build
 chmod +x /etc/rc.local
 
 # Custom Banner SSH
-#wget -O /etc/issue.net "https://github.com/idtunnel/sshtunnel/raw/master/debian9/banner-custom.conf"
+#wget -O /etc/issue.net "https://raw.githubusercontent.com/denintel/den/master/debian9/banner-custom.conf"
 #chmod +x /etc/issue.net
 
 #echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
@@ -297,17 +297,17 @@ echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 
 # download script
 cd /usr/bin
-wget -O menu "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/menu.sh"
-wget -O usernew "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/trial.sh"
-wget -O hapus "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/hapus.sh"
-wget -O cek "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/user-login.sh"
-wget -O member "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/user-list.sh"
-wget -O jurus69 "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/restart.sh"
-wget -O speedtest "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/speedtest_cli.py"
-wget -O info "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/info.sh"
-wget -O about "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/about.sh"
-wget -O delete "https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/delete.sh"
+wget -O menu "https://raw.githubusercontent.com/denintel/den/master/debian9/menu.sh"
+wget -O usernew "https://raw.githubusercontent.com/denintel/den/master/debian9/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/denintel/den/master/debian9/trial.sh"
+wget -O hapus "https://raw.githubusercontent.com/denintel/den/master/debian9/hapus.sh"
+wget -O cek "https://raw.githubusercontent.com/denintel/den/master/debian9/user-login.sh"
+wget -O member "https://raw.githubusercontent.com/denintel/den/master/debian9/user-list.sh"
+wget -O restart "https://raw.githubusercontent.com/denintel/den/master/debian9/restart.sh"
+wget -O speedtest "https://raw.githubusercontent.com/denintel/den/master/debian9/speedtest_cli.py"
+wget -O info "https://raw.githubusercontent.com/denintel/den/master/debian9/info.sh"
+wget -O about "https://raw.githubusercontent.com/denintel/den/master/debian9/about.sh"
+wget -O delete "https://raw.githubusercontent.com/denintel/den/master/debian9/delete.sh"
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 
@@ -317,7 +317,7 @@ chmod +x trial
 chmod +x hapus
 chmod +x cek
 chmod +x member
-chmod +x jurus69
+chmod +x restart
 chmod +x speedtest
 chmod +x info
 chmod +x about
@@ -346,8 +346,8 @@ echo "OpenSSH   : 22,143"  | tee -a log-install.txt
 echo "Dropbear  : 109,456"  | tee -a log-install.txt
 echo "SSL       : 443"  | tee -a log-install.txt
 echo "Squid3    : 80,8080,3128 (limit to IP SSH)"  | tee -a log-install.txt
-echo "badvpn    : badvpn-udpgw port 7300"  | tee -a log-install.txt
-echo "nginx     : 81"  | tee -a log-install.txt
+echo "Badvpn    : badvpn-udpgw port 7300"  | tee -a log-install.txt
+echo "Nginx     : 81"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Script"  | tee -a log-install.txt
 echo "------"  | tee -a log-install.txt
@@ -357,7 +357,7 @@ echo "trial     : Membuat Akun Trial"  | tee -a log-install.txt
 echo "hapus     : Menghapus Akun SSH"  | tee -a log-install.txt
 echo "cek       : Cek User Login"  | tee -a log-install.txt
 echo "member    : Cek Member SSH"  | tee -a log-install.txt
-echo "jurus69   : Restart Service dropbear, squid3, stunnel4, vpn, ssh)"  | tee -a log-install.txt
+echo "restart   : Restart Service dropbear, squid3, stunnel4, vpn, ssh)"  | tee -a log-install.txt
 echo "reboot    : Reboot VPS"  | tee -a log-install.txt
 echo "speedtest : Speedtest VPS"  | tee -a log-install.txt
 echo "info      : Menampilkan Informasi Sistem"  | tee -a log-install.txt
@@ -369,8 +369,6 @@ echo "Fitur lain"  | tee -a log-install.txt
 echo "----------"  | tee -a log-install.txt
 echo "Timezone  : Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
 echo "IPv6      : [off]"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "Modified by hidessh"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Log Instalasi --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
@@ -384,7 +382,7 @@ rm -f /root/openssh.sh
 echo "================  install OPENVPN  saya disable======================"
 echo "========================================================="
 # install openvpn debian 9 ( openvpn port 1194 dan 443 )
-wget https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/openvpn.sh && chmod +x openvpn.sh && bash openvpn.sh
+wget https://raw.githubusercontent.com/denintel/den/master/debian9/openvpn.sh && chmod +x openvpn.sh && bash openvpn.sh
 
 echo "==================== Restart Service ===================="
 echo "========================================================="
